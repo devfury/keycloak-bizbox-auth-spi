@@ -11,11 +11,13 @@ import java.util.List;
 @Setter
 public class UserResponseDTO {
     @JsonProperty("id")
-    public Long id;
+    public String id;
     @JsonProperty("name")
     private String name;
     @JsonProperty("surname")
     private String surname;
+    @JsonProperty("username")
+    private String username;
     @JsonProperty("email")
     private String email;
     @JsonProperty("creationDatetime")
@@ -23,6 +25,7 @@ public class UserResponseDTO {
     @JsonProperty("lastUpdateDatetime")
     private String lastUpdateDatetime;
     @JsonProperty("roles")
-    private List<RoleDTO> roles;
+    private List<String> roles;
+    // private List<RoleDTO> roles;
 
 }
