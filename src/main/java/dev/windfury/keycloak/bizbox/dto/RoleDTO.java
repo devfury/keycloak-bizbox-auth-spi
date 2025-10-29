@@ -1,4 +1,4 @@
-package com.example.keycloak.dto;
+package dev.windfury.keycloak.bizbox.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;

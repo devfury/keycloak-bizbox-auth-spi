@@ -15,7 +15,7 @@
 
 ## Coding Style & Naming Conventions
 - Follow standard Java 17 style: 4-space indentation, `UpperCamelCase` for classes, `lowerCamelCase` for methods and fields.
-- Keep new types under `com.example.keycloak` subpackages (`dto`, `auth`, `service`) to preserve SPI discovery.
+- Keep new types under `dev.windfury.keycloak` subpackages (`dto`, `auth`, `service`) to preserve SPI discovery.
 - Prefer Lombok for DTOs and plain constructors; avoid complex logic inside Lombok-annotated classes.
 - Use SLF4J for logging; inject `LoggerFactory.getLogger(CurrentClass.class)` or `@Slf4j`.
 

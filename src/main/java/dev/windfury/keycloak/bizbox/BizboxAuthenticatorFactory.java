@@ -1,4 +1,4 @@
-package com.example.keycloak;
+package dev.windfury.keycloak.bizbox;
 
 import org.keycloak.Config;
 import org.keycloak.authentication.Authenticator;
@@ -13,17 +13,17 @@ import org.slf4j.LoggerFactory;
 import java.util.List;
 
 
-public class CustomAuthenticatorFactory implements AuthenticatorFactory {
+public class BizboxAuthenticatorFactory implements AuthenticatorFactory {
 
-    private final Logger log = LoggerFactory.getLogger(CustomAuthenticatorFactory.class);
-    public static final String PROVIDER_ID = "custom-authenticator";
+    private final Logger log = LoggerFactory.getLogger(BizboxAuthenticatorFactory.class);
+    public static final String PROVIDER_ID = "bizbox-authenticator";
 
     AuthenticationExecutionModel.Requirement[] REQUIREMENT_CHOICES = new AuthenticationExecutionModel.Requirement[]{AuthenticationExecutionModel.Requirement.REQUIRED, AuthenticationExecutionModel.Requirement.ALTERNATIVE, AuthenticationExecutionModel.Requirement.DISABLED};
 
 
     @Override
     public Authenticator create(KeycloakSession session) {
-        return new CustomAuthenticator(session);
+        return new BizboxAuthenticator(session);
     }
 
     @Override
@@ -48,7 +48,7 @@ public class CustomAuthenticatorFactory implements AuthenticatorFactory {
 
     @Override
     public String getDisplayType() {
-        return "Custom Authenticator";
+        return "Bizbox Authenticator";
     }
 
     @Override
@@ -58,7 +58,7 @@ public class CustomAuthenticatorFactory implements AuthenticatorFactory {
 
     @Override
     public String getHelpText() {
-        return "Customised authenticator to authenticate the user to an external API";
+        return "Bizbox authenticator to authenticate the user to an external API";
     }
 
     @Override

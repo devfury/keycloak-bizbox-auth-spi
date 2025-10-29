@@ -1,11 +1,9 @@
-package com.example.keycloak.dto;
+package dev.windfury.keycloak.bizbox.dto;
 
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.Collections;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Getter
 @Setter
