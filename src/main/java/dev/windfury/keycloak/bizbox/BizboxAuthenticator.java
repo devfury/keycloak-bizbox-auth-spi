@@ -7,6 +7,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.keycloak.authentication.AuthenticationFlowContext;
 import org.keycloak.authentication.AuthenticationFlowError;
 import org.keycloak.authentication.Authenticator;
+import org.keycloak.credential.CredentialModel;
 import org.keycloak.models.KeycloakSession;
 import org.keycloak.models.RealmModel;
 import org.keycloak.models.UserModel;
@@ -61,12 +62,13 @@ public class BizboxAuthenticator implements Authenticator {
                     // create user if not exists
                     userModel = context.getSession().users().addUser(context.getRealm(), user.getUsername());
                 }
-                userModel.setEmail(user.getEmail());
                 userModel.setFirstName(user.getFirstName());
                 userModel.setLastName(user.getLastName());
+                userModel.setEmail(user.getEmail());
+                userModel.setSingleAttribute("mobile-tel-number", user.getMobileTelephoneNumber());
+                userModel.setSingleAttribute("inner-tel-number", user.getInnerTelephoneNumber());
+                userModel.setSingleAttribute("fax-tel-number", user.getFaxTelephoneNumber());
                 userModel.setEnabled(true);
-                userModel.setSingleAttribute("extra-key", "extra-value");
-                // userModel.credentialManager().createPassword(password, false);
                 for (String role : user.getRoles()) {
                     userModel.grantRole(context.getRealm().getRole(role));
                 }
@@ -127,10 +129,12 @@ public class BizboxAuthenticator implements Authenticator {
 
         return new User(
             userMember.getLoginId(),
-            buildEmail(userMember),
             firstName,
             lastName,
-            token,
+            buildEmail(userMember),
+            userMember.getMobileTelephoneNumber(),
+            userMember.getTelephoneNumber(),
+            userMember.getFaxNumber(),
             Collections.singletonList("default-roles-ez-test"));
     }
 
